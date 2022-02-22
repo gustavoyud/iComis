@@ -11,9 +11,13 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		49C2F8739A9544B5BF724D71 /* FilsonPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65E37B16C31A4EFDA9AC998F /* FilsonPro-Regular.ttf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-IComis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-IComis.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-IComis-IComisTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-IComis-IComisTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		940A2F2AD91046A78B577E0A /* FilsonPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 133E57353D7C4D0EBDBDC014 /* FilsonPro-Bold.ttf */; };
+		A3A6B80D6BB64F91A6E16CD2 /* FilsonPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B74BBF741C545558A4553EF /* FilsonPro-Medium.ttf */; };
+		D9ED65FDB8D9423987C3E3FB /* FilsonPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB484F7D1FA74B958AD3A9F8 /* FilsonPro-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +34,20 @@
 		00E356EE1AD99517003FC87E /* IComisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IComisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* IComisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IComisTests.m; sourceTree = "<group>"; };
+		133E57353D7C4D0EBDBDC014 /* FilsonPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "FilsonPro-Bold.ttf"; path = "../assets/fonts/FilsonPro-Bold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* IComis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IComis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = IComis/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = IComis/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = IComis/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = IComis/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = IComis/main.m; sourceTree = "<group>"; };
+		1B74BBF741C545558A4553EF /* FilsonPro-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "FilsonPro-Medium.ttf"; path = "../assets/fonts/FilsonPro-Medium.ttf"; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-IComis-IComisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IComis-IComisTests.release.xcconfig"; path = "Target Support Files/Pods-IComis-IComisTests/Pods-IComis-IComisTests.release.xcconfig"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-IComis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IComis.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65E37B16C31A4EFDA9AC998F /* FilsonPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "FilsonPro-Regular.ttf"; path = "../assets/fonts/FilsonPro-Regular.ttf"; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-IComis-IComisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IComis-IComisTests.debug.xcconfig"; path = "Target Support Files/Pods-IComis-IComisTests/Pods-IComis-IComisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = IComis/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AB484F7D1FA74B958AD3A9F8 /* FilsonPro-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "FilsonPro-Light.ttf"; path = "../assets/fonts/FilsonPro-Light.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-IComis-IComisTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IComis-IComisTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A881CF5CF3F2B244570E2A /* Pods-IComis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IComis.debug.xcconfig"; path = "Target Support Files/Pods-IComis/Pods-IComis.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-IComis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IComis.release.xcconfig"; path = "Target Support Files/Pods-IComis/Pods-IComis.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
+				A6BC7AE1AA8E40C2B61E44C3 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +144,18 @@
 				00E356EE1AD99517003FC87E /* IComisTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A6BC7AE1AA8E40C2B61E44C3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				133E57353D7C4D0EBDBDC014 /* FilsonPro-Bold.ttf */,
+				AB484F7D1FA74B958AD3A9F8 /* FilsonPro-Light.ttf */,
+				1B74BBF741C545558A4553EF /* FilsonPro-Medium.ttf */,
+				65E37B16C31A4EFDA9AC998F /* FilsonPro-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
@@ -245,6 +266,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				940A2F2AD91046A78B577E0A /* FilsonPro-Bold.ttf in Resources */,
+				D9ED65FDB8D9423987C3E3FB /* FilsonPro-Light.ttf in Resources */,
+				A3A6B80D6BB64F91A6E16CD2 /* FilsonPro-Medium.ttf in Resources */,
+				49C2F8739A9544B5BF724D71 /* FilsonPro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
