@@ -1,11 +1,4 @@
-import {PixelRatio} from 'react-native';
-
-/**
- * Scale font based on pixel ratio
- *
- * @param size - font size
- */
-export const scaleFont = (size: number) => size * PixelRatio.getFontScale();
+import {scaleFont} from './utils';
 
 // FONT FAMILY
 export const FONT_FAMILY_REGULAR = 'FilsonPro-Regular';

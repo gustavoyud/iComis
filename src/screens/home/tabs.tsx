@@ -1,15 +1,10 @@
-import {
-  createMaterialTopTabNavigator,
-  MaterialTopTabBar,
-  MaterialTopTabBarProps,
-} from '@react-navigation/material-top-tabs';
-import React, {FC} from 'react';
-import {Text, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {BASE_COLORS} from '../../shared/styles/colors';
 import {FONT_FAMILY_MEDIUM} from '../../shared/styles/typography';
 import RestaurantsComponent from './restaurants/restaurants';
+import CustomTabBar from './tab-bar/tab-bar';
 
 Icon.loadFont();
 
@@ -37,31 +32,6 @@ export type RoutesParamList = {
  * Top tab navigator
  */
 const TopTab = createMaterialTopTabNavigator();
-
-const CustomTabBar: FC<MaterialTopTabBarProps> = props => {
-  return (
-    <SafeAreaView style={{backgroundColor: BASE_COLORS.mainBackground}}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingHorizontal: 18,
-        }}>
-        <Text
-          style={{
-            fontFamily: FONT_FAMILY_MEDIUM,
-            color: BASE_COLORS.textLight,
-            fontSize: 14,
-          }}>
-          Alguma coisa
-        </Text>
-        <Icon name="home" size={26} color={BASE_COLORS.primary600} />
-      </View>
-      <MaterialTopTabBar {...props} />
-    </SafeAreaView>
-  );
-};
 
 /**
  * Top Tab navigator
