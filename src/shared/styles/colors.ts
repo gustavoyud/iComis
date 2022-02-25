@@ -19,8 +19,14 @@ export const BASE_COLORS = {
   mainBackground: '#FFF',
 
   textLight: '#a5a5a5',
-  textMedium: '#3F3E3E',
+  textMedium: '#7b7b7b',
   textStrong: '#000000',
 
-  border: '#A6A29F',
+  border: '#E8E8E8',
+  primaryBackground: '#F7ACB766',
+
+  greenCategory: '#b5cf47',
+  redCategory: '#ea1d2c',
+  purpleCategory: '#a553bf',
+  yellowCategory: '#f7d454',
 };

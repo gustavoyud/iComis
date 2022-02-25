@@ -1,9 +1,9 @@
 import React, {FC, useState} from 'react';
 import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {get} from '../../shared/services/http-client';
-import {BASE_COLORS} from '../../shared/styles/colors';
-import {filson, flex, mt} from '../../shared/styles/utils';
+import {get} from '~/shared/services/http-client';
+import {BASE_COLORS} from '~/shared/styles/colors';
+import {filson, flex, mt} from '~/shared/styles/utils';
 import {styles} from './style';
 
 type Props = {};
@@ -12,6 +12,14 @@ type Joke = {
   joke?: string;
   response?: string;
   id?: number;
+};
+
+const Badge = ({count}: {count: number}) => {
+  return (
+    <View style={styles.badgeBackground}>
+      <Text style={styles.badgeText}>{count}</Text>
+    </View>
+  );
 };
 
 const OrderComponent: FC<Props> = () => {
@@ -39,23 +47,36 @@ const OrderComponent: FC<Props> = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={filson('Bold', 25)}>Pedidos</Text>
+      <Text style={filson('Regular', 16, BASE_COLORS.textStrong, 'center')}>MEUS PEDIDOS</Text>
       <View style={mt(20)}>
-        {currentJoke.joke && (
-          <View style={styles.jokeCard}>
-            <Text style={filson('Regular')}>{currentJoke?.joke}</Text>
-            <Text style={filson('Bold', 14, BASE_COLORS.primary500)}>{currentJoke?.response}</Text>
+        <View style={styles.jokeCard}>
+          <Text style={filson('Bold', 20)}>Peça de novo</Text>
+
+          <View style={styles.jokeResponse}>
+            {currentJoke?.joke ? (
+              <>
+                <Text style={filson('Regular')}>{currentJoke?.joke}</Text>
+                <Text style={filson('Bold', 14, BASE_COLORS.primary500)}>
+                  {currentJoke?.response}
+                </Text>
+              </>
+            ) : (
+              <View style={flex('flex-start')}>
+                <Badge count={1} />
+                <Text style={filson('Regular', 14, BASE_COLORS.textLight)}>
+                  Piada muito engraçada
+                </Text>
+              </View>
+            )}
           </View>
-        )}
-        {!currentJoke?.joke && (
           <TouchableOpacity onPress={() => getJoke()} style={[styles.jokeButton, flex('center')]}>
             {loading ? (
               <ActivityIndicator color={BASE_COLORS.mainBackground} />
             ) : (
-              <Text style={filson('Regular', 14, BASE_COLORS.mainBackground)}>Pedir piadas</Text>
+              <Text style={filson('Bold', 14, BASE_COLORS.mainBackground)}>Pedir piadas</Text>
             )}
           </TouchableOpacity>
-        )}
+        </View>
       </View>
     </SafeAreaView>
   );

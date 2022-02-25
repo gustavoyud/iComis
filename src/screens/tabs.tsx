@@ -1,7 +1,7 @@
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {BASE_COLORS} from '../shared/styles/colors';
+import {BASE_COLORS} from '~/shared/styles/colors';
 import {HomeTopTabNavigator} from './home/tabs';
 import OrderComponent from './orders/orders';
 

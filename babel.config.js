@@ -14,5 +14,25 @@ module.exports = {
         verbose: false,
       },
     ],
+    [
+      'babel-plugin-root-import',
+      {
+        rootPathPrefix: '~',
+        rootPathSuffix: 'src',
+      },
+    ],
   ],
+  env: {
+    production: {
+      plugins: [
+        [
+          'babel-plugin-root-import',
+          {
+            rootPathPrefix: '~',
+            rootPathSuffix: 'src',
+          },
+        ],
+      ],
+    },
+  },
 };

@@ -1,8 +1,8 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {BASE_COLORS} from '../../shared/styles/colors';
-import {FONT_FAMILY_MEDIUM} from '../../shared/styles/typography';
+import {BASE_COLORS} from '~/shared/styles/colors';
+import {FONT_FAMILY_MEDIUM} from '~/shared/styles/typography';
 import RestaurantsComponent from './restaurants/restaurants';
 import CustomTabBar from './tab-bar/tab-bar';
 
@@ -42,13 +42,14 @@ export function HomeTopTabNavigator() {
       tabBar={props => <CustomTabBar {...props} />}
       screenOptions={{
         tabBarIndicatorStyle: {
-          backgroundColor: BASE_COLORS.primary700,
+          backgroundColor: BASE_COLORS.primary500,
+          height: 1,
         },
         tabBarLabelStyle: {fontFamily: FONT_FAMILY_MEDIUM, fontSize: 15},
         lazy: true,
-        tabBarItemStyle: {margin: 0, padding: 0, width: 125},
-        tabBarStyle: {elevation: 0, shadowOpacity: 0, borderBottomWidth: 0},
-        tabBarActiveTintColor: BASE_COLORS.primary600,
+        tabBarItemStyle: {margin: 0, padding: 0, width: 125, height: 45},
+        tabBarStyle: {elevation: 0, shadowOpacity: 0, borderBottomWidth: 0, marginHorizontal: 10},
+        tabBarActiveTintColor: BASE_COLORS.primary500,
         tabBarInactiveTintColor: BASE_COLORS.textLight,
         tabBarScrollEnabled: true,
       }}>
