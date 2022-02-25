@@ -3,6 +3,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {BASE_COLORS} from '../shared/styles/colors';
 import {HomeTopTabNavigator} from './home/tabs';
+import OrderComponent from './orders/orders';
 
 Icon.loadFont();
 
@@ -63,7 +64,7 @@ export function TabsStack() {
           tabBarLabel: 'Pedidos',
           tabBarIcon: ({color}) => <Icon name="receipt-long" size={26} color={color} />,
         }}
-        component={HomeTopTabNavigator}
+        component={OrderComponent}
       />
       <Tab.Screen
         name={ROUTES.Profile}
