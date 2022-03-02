@@ -1,14 +1,15 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import 'react-native-gesture-handler';
 import {Provider} from 'react-redux';
-import {TabsStack} from './src/screens/tabs';
+import {RootStack} from '~/screens/stack';
 import {store} from './src/shared/store';
 
 const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <TabsStack />
+        <RootStack />
       </NavigationContainer>
     </Provider>
   );

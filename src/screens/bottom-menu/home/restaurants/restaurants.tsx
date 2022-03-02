@@ -1,6 +1,8 @@
 import React, {FC} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {connect, ConnectedProps} from 'react-redux';
+import {ROOT_ROUTES} from '~/screens/stack';
+import Carousel, {Page} from '~/shared/components/carousel/carousel';
 import Filters, {Filter} from '~/shared/components/filters/filters';
 import SubCategories, {SubCategory} from '~/shared/components/sub-categories/sub-categories';
 import {RootState} from '~/shared/store';
@@ -76,41 +78,79 @@ const RestaurantsComponent: FC<Props> = ({filters: {selectedKeys}}) => {
   /**
    * Sub category list
    */
-  const subCategories: SubCategory[] = [
+  const subCategories: SubCategory<ROOT_ROUTES>[] = [
     {
       label: 'Mercado',
       backgroundColor: BASE_COLORS.greenCategory,
       image: 'https://www.pngplay.com/wp-content/uploads/1/Online-Shopping-Cart-PNG-Photo.png',
+      route: ROOT_ROUTES.Store,
+      category: 'market',
     },
     {
       label: 'Marmita',
       backgroundColor: BASE_COLORS.redCategory,
       image: 'https://www.pngplay.com/wp-content/uploads/13/Grilled-Transparent-Image.png',
+      route: ROOT_ROUTES.Store,
+      category: 'marmitation',
     },
     {
       label: 'Pizzas',
       backgroundColor: BASE_COLORS.purpleCategory,
       image: 'https://www.pngplay.com/wp-content/uploads/1/Pizza-PNG.png',
+      route: ROOT_ROUTES.Store,
+      category: 'pizza',
     },
     {
       label: 'Saudáveis',
       backgroundColor: BASE_COLORS.greenCategory,
       image: 'https://www.pngplay.com/wp-content/uploads/13/Grilled-Transparent-Images.png',
+      route: ROOT_ROUTES.Store,
+      category: 'health',
     },
     {
       label: 'Doces & Bolos',
       backgroundColor: BASE_COLORS.purpleCategory,
       image: 'https://pngplay.com/wp-content/uploads/13/Dessert-Transparent-Images.png',
+      route: ROOT_ROUTES.Store,
+      category: 'candies&cakes',
     },
     {
       label: 'Lanches',
       backgroundColor: BASE_COLORS.redCategory,
       image: 'https://www.pngplay.com/wp-content/uploads/9/Junk-Food-PNG-Photo-Image.png',
+      route: ROOT_ROUTES.Store,
+      category: 'launch',
     },
     {
       label: 'Cafeterias',
       backgroundColor: BASE_COLORS.redCategory,
       image: 'https://www.pngplay.com/wp-content/uploads/8/Starbucks-Coffee-Transparent-Images.png',
+      route: ROOT_ROUTES.Store,
+      category: 'coffes',
+    },
+  ];
+
+  /**
+   * Carousel ref
+   */
+  const carouselPages: Page<ROOT_ROUTES>[] = [
+    {
+      label: 'Cafeterias',
+      background: BASE_COLORS.redCategory,
+      image: 'https://www.pngplay.com/wp-content/uploads/8/Starbucks-Coffee-Transparent-Images.png',
+      route: ROOT_ROUTES.Store,
+    },
+    {
+      label: 'Saudáveis',
+      background: BASE_COLORS.greenCategory,
+      image: 'https://www.pngplay.com/wp-content/uploads/9/Junk-Food-PNG-Photo-Image.png',
+      route: ROOT_ROUTES.Store,
+    },
+    {
+      label: 'Pizzas',
+      background: BASE_COLORS.purpleCategory,
+      image: 'https://www.pngplay.com/wp-content/uploads/1/Pizza-PNG.png',
+      route: ROOT_ROUTES.Store,
     },
   ];
 
@@ -123,7 +163,7 @@ const RestaurantsComponent: FC<Props> = ({filters: {selectedKeys}}) => {
         <SubCategories subCategories={subCategories} />
 
         <View style={mt(15)}>
-          <Text style={filson('Regular')}>Carrosell</Text>
+          <Carousel pages={carouselPages} />
           <View style={[flex('space-between'), mt(30)]}>
             <Text style={filson('Regular', 18, BASE_COLORS.textStrong)}>Últimas lojas</Text>
             <TouchableOpacity>
