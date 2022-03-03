@@ -2,7 +2,6 @@ import {useNavigation} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {ROUTES} from '~/screens/bottom-menu/tabs';
 import {BASE_COLORS} from '~/shared/styles/colors';
 import {filson, mr, mt} from '~/shared/styles/utils';
 import {styles} from './styles';
@@ -11,12 +10,12 @@ Icon.loadFont();
 /**
  * Subcategory type
  */
-export type SubCategory<T = ROUTES> = {
+export type SubCategory = {
   label: string;
   key?: string;
   category?: string;
   backgroundColor: string;
-  route?: T;
+  route?: string;
   image?: string;
 };
 

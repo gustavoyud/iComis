@@ -1,19 +1,18 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useRef, useState} from 'react';
 import {Dimensions, FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
-import {ROUTES} from '~/screens/bottom-menu/tabs';
 import {BASE_COLORS} from '~/shared/styles/colors';
 import {filson, flex} from '~/shared/styles/utils';
 import {styles} from './style';
 
 const {width} = Dimensions.get('window');
 
-export type Page<T = ROUTES> = {
+export type Page = {
   background: string;
   image: string;
   key?: string;
   label: string;
-  route: T;
+  route: string;
 };
 
 type Props = {
