@@ -10,4 +10,11 @@ export const styles = StyleSheet.create({
   filtersSection: {
     paddingVertical: 15,
   },
+  mainContainer: {
+    flex: 1,
+  },
+  littleCarContainer: {
+    height: 60,
+    backgroundColor: BASE_COLORS.primary500,
+  },
 });

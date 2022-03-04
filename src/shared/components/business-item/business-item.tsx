@@ -3,6 +3,9 @@ import React, {FC, useState} from 'react';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {connect, ConnectedProps} from 'react-redux';
+import {RootState} from '~/shared/store';
+import {AddProduct} from '~/shared/store/little-car/actions';
 import {BASE_COLORS} from '~/shared/styles/colors';
 import {filson, flex, mb, ml, mt} from '~/shared/styles/utils';
 import NotFound from '../not-found/not-found';
@@ -17,7 +20,7 @@ export type Business = {
   key: string;
   category: string;
   categoryLabel: string;
-  deliveryFee: number;
+  valuation: number;
   stars: number;
   distance: string;
   estimatedTime: string;
@@ -25,6 +28,7 @@ export type Business = {
   isOpened?: boolean;
   isShort?: boolean;
   onFavoritePress?: () => void;
+  onItemPress?: () => void;
 };
 
 const BusinessItem: FC<Business> = ({
@@ -33,15 +37,16 @@ const BusinessItem: FC<Business> = ({
   categoryLabel,
   distance,
   estimatedTime,
-  deliveryFee,
+  valuation,
   logo: uri,
   isFavorite,
   isOpened = true,
   isShort = false,
   onFavoritePress,
+  onItemPress,
 }) => {
   return !isShort ? (
-    <TouchableOpacity style={flex('space-between')}>
+    <TouchableOpacity onPress={onItemPress} style={flex('space-between')}>
       <View style={flex('flex-start')}>
         <Image style={[styles.image, !isOpened && styles.disabled]} source={{uri}} />
         <View style={ml(10)}>
@@ -79,9 +84,9 @@ const BusinessItem: FC<Business> = ({
               style={filson(
                 'Regular',
                 14,
-                deliveryFee ? BASE_COLORS.textMedium : BASE_COLORS.textSuccess,
+                valuation ? BASE_COLORS.textMedium : BASE_COLORS.textSuccess,
               )}>
-              {deliveryFee ? `R$${deliveryFee} milhões` : 'Grátis'}
+              {valuation ? `R$${valuation} milhões` : 'Grátis'}
             </Text>
           </View>
         </View>
@@ -95,7 +100,7 @@ const BusinessItem: FC<Business> = ({
       </TouchableOpacity>
     </TouchableOpacity>
   ) : (
-    <TouchableOpacity style={styles.column}>
+    <TouchableOpacity onPress={onItemPress} style={styles.column}>
       <Image style={[styles.image, !isOpened && styles.disabled]} source={{uri}} />
       <Text
         lineBreakMode="tail"
@@ -116,7 +121,26 @@ const BusinessItem: FC<Business> = ({
   );
 };
 
-type BusinessProps = {
+/**
+ * Redux state
+ */
+const mapState = ({filters, littleCar}: RootState) => ({filters, littleCar});
+
+const mapDipatch = {
+  addProductToLitteCar: AddProduct,
+};
+
+/**
+ * Redux connector
+ */
+const connector = connect(mapState, mapDipatch);
+
+/**
+ * Redux props
+ */
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type BusinessProps = PropsFromRedux & {
   list: Business[];
   isShort?: boolean;
 };
@@ -124,7 +148,7 @@ type BusinessProps = {
 /**
  * Business list
  */
-const BusinessList: FC<BusinessProps> = ({list, isShort = false}) => {
+const BusinessList: FC<BusinessProps> = ({list, isShort = false, addProductToLitteCar}) => {
   /**
    * Selected
    */
@@ -165,6 +189,7 @@ const BusinessList: FC<BusinessProps> = ({list, isShort = false}) => {
       renderItem={({item, index}) => (
         <BusinessItem
           {...item}
+          onItemPress={() => addProductToLitteCar(item)}
           isFavorite={selected.get(`${item.key}-${index}`)}
           onFavoritePress={() => selectFilter(`${item.key}-${index}`)}
           isShort={isShort}
@@ -175,4 +200,4 @@ const BusinessList: FC<BusinessProps> = ({list, isShort = false}) => {
   );
 };
 
-export default BusinessList;
+export default connector(BusinessList);

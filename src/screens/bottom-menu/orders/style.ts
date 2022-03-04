@@ -11,6 +11,11 @@ export const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 4,
   },
+  cancelButton: {
+    backgroundColor: BASE_COLORS.mainBackground,
+    padding: 15,
+    borderRadius: 4,
+  },
   jokeCard: {
     borderRadius: 8,
     backgroundColor: BASE_COLORS.mainBackground,

@@ -12,6 +12,7 @@ import {FILTERS} from '~/shared/mocks/filters';
 import {BUSINESS_LIST} from '~/shared/mocks/stores';
 import {SUB_CATEGORIES} from '~/shared/mocks/sub-categories';
 import {RootState} from '~/shared/store';
+import {totalValue} from '~/shared/store/little-car/reducers';
 import {BASE_COLORS} from '~/shared/styles/colors';
 import {filson, flex, mb, mr, mt} from '~/shared/styles/utils';
 import {ROUTES, RoutesParamList} from '../../tabs';
@@ -20,7 +21,11 @@ import {styles} from './styles';
 /**
  * Redux state
  */
-const mapState = ({filters}: RootState) => ({filters});
+const mapState = ({filters, littleCar}: RootState) => ({
+  filters,
+  littleCar,
+  totalValue: totalValue(littleCar),
+});
 
 /**
  * Redux connector
@@ -44,7 +49,7 @@ type Props = PropsFromRedux & {
   navigation: NavigationProps;
 };
 
-const RestaurantsComponent: FC<Props> = ({filters: {selectedKeys}, navigation}) => {
+const RestaurantsComponent: FC<Props> = ({littleCar: {products}, totalValue, navigation}) => {
   /**
    * Carousel ref
    */
@@ -70,45 +75,58 @@ const RestaurantsComponent: FC<Props> = ({filters: {selectedKeys}, navigation}) 
   ];
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.filtersSection}>
-        <Filters filters={FILTERS} />
-      </View>
-      <View>
-        <SubCategories subCategories={SUB_CATEGORIES} />
+    <View style={styles.mainContainer}>
+      <ScrollView style={[styles.container]} showsVerticalScrollIndicator={false}>
+        <View style={styles.filtersSection}>
+          <Filters filters={FILTERS} />
+        </View>
+        <View>
+          <SubCategories subCategories={SUB_CATEGORIES} />
 
-        <View style={[mt(15), mb(20)]}>
-          <Carousel pages={carouselPages} />
-          <View style={[flex('space-between'), mt(20), mb(20), mr(20)]}>
-            <Text style={filson('Regular', 18, BASE_COLORS.textStrong)}>Últimas lojas</Text>
-            <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Order)}>
-              <Text style={filson('Regular', 14, BASE_COLORS.primary500)}>Ver mais</Text>
-            </TouchableOpacity>
+          <View style={[mt(15), mb(20)]}>
+            <Carousel pages={carouselPages} />
+            <View style={[flex('space-between'), mt(20), mb(20), mr(20)]}>
+              <Text style={filson('Regular', 18, BASE_COLORS.textStrong)}>Últimas lojas</Text>
+              <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Order)}>
+                <Text style={filson('Regular', 14, BASE_COLORS.primary500)}>Ver mais</Text>
+              </TouchableOpacity>
+            </View>
+
+            <BusinessList list={BUSINESS_LIST} isShort />
           </View>
 
-          <BusinessList list={BUSINESS_LIST} isShort />
-        </View>
+          <Banner bannerId={BANNERS.market} />
 
-        <Banner bannerId={BANNERS.market} />
-
-        <View style={[mt(15), mb(20)]}>
-          <View style={[flex('space-between'), mt(20), mb(20), mr(20)]}>
-            <Text style={filson('Regular', 18, BASE_COLORS.textStrong)}>Famosos no iComis</Text>
-            <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Order)}>
-              <Text style={filson('Regular', 14, BASE_COLORS.primary500)}>Ver mais</Text>
-            </TouchableOpacity>
+          <View style={[mt(15), mb(20)]}>
+            <View style={[flex('space-between'), mt(20), mb(20), mr(20)]}>
+              <Text style={filson('Regular', 18, BASE_COLORS.textStrong)}>Famosos no iComis</Text>
+              <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Order)}>
+                <Text style={filson('Regular', 14, BASE_COLORS.primary500)}>Ver mais</Text>
+              </TouchableOpacity>
+            </View>
+            <BusinessList list={BUSINESS_LIST} isShort />
           </View>
-          <BusinessList list={BUSINESS_LIST} isShort />
-        </View>
 
-        <Banner bannerId={BANNERS.gourmet} />
+          <Banner bannerId={BANNERS.gourmet} />
 
-        <View style={mr(20)}>
-          <Text style={[filson('Regular', 18, BASE_COLORS.textStrong), mt(25), mb(15)]}>Lojas</Text>
-          <BusinessList list={BUSINESS_LIST} />
+          <View style={mr(20)}>
+            <Text style={[filson('Regular', 18, BASE_COLORS.textStrong), mt(25), mb(15)]}>
+              Lojas
+            </Text>
+            <BusinessList list={BUSINESS_LIST} />
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      {products.length > 0 && (
+        <TouchableOpacity
+          onPress={() => navigation.navigate(ROUTES.Order)}
+          style={[styles.littleCarContainer, flex('center')]}>
+          <Text style={filson('Bold', 30, BASE_COLORS.mainBackground)}>
+            R$ {totalValue.toFixed(2)} milhões
+          </Text>
+        </TouchableOpacity>
+      )}
+    </View>
   );
 };
 
