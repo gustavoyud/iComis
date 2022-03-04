@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -24,6 +24,7 @@ export type Business = {
   isFavorite: boolean;
   isOpened?: boolean;
   isShort?: boolean;
+  onFavoritePress?: () => void;
 };
 
 const BusinessItem: FC<Business> = ({
@@ -34,8 +35,10 @@ const BusinessItem: FC<Business> = ({
   estimatedTime,
   deliveryFee,
   logo: uri,
+  isFavorite,
   isOpened = true,
   isShort = false,
+  onFavoritePress,
 }) => {
   return !isShort ? (
     <TouchableOpacity style={flex('space-between')}>
@@ -72,17 +75,22 @@ const BusinessItem: FC<Business> = ({
               <Text style={filson('Bold', 14, BASE_COLORS.textMedium)}>Loja fechada</Text>
             )}
             <View style={styles.goodDot} />
-            <Text style={filson('Regular', 14, BASE_COLORS.textMedium)}>
-              {deliveryFee ? `R$${deliveryFee}` : 'Frete grátis'}
+            <Text
+              style={filson(
+                'Regular',
+                14,
+                deliveryFee ? BASE_COLORS.textMedium : BASE_COLORS.textSuccess,
+              )}>
+              {deliveryFee ? `R$${deliveryFee} milhões` : 'Grátis'}
             </Text>
           </View>
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onFavoritePress}>
         <MaterialCommunityIcons
-          name="cards-heart-outline"
+          name={isFavorite ? 'cards-heart' : 'cards-heart-outline'}
           size={25}
-          color={BASE_COLORS.textMedium}
+          color={isFavorite ? BASE_COLORS.primary500 : BASE_COLORS.textMedium}
         />
       </TouchableOpacity>
     </TouchableOpacity>
@@ -117,7 +125,33 @@ type BusinessProps = {
  * Business list
  */
 const BusinessList: FC<BusinessProps> = ({list, isShort = false}) => {
+  /**
+   * Selected
+   */
+  const [selected, setRepeatType] = useState(new Map());
+
+  /**
+   * Select filter
+   *
+   * @param filter - filter to be applied
+   */
+  function selectFilter(filter: string) {
+    const currentSelected = new Map(selected);
+
+    if (!currentSelected.get(filter)) {
+      currentSelected.set(filter, !selected.get(filter));
+    } else {
+      currentSelected.delete(filter);
+    }
+
+    setRepeatType(currentSelected);
+  }
+
+  /**
+   * Navigation ref
+   */
   const navigation = useNavigation();
+
   return (
     <FlatList
       ListEmptyComponent={() => (
@@ -128,7 +162,14 @@ const BusinessList: FC<BusinessProps> = ({list, isShort = false}) => {
       showsVerticalScrollIndicator={false}
       ItemSeparatorComponent={() => <View style={mb(20)} />}
       data={list}
-      renderItem={({item}) => <BusinessItem isShort={isShort} {...item} />}
+      renderItem={({item, index}) => (
+        <BusinessItem
+          {...item}
+          isFavorite={selected.get(`${item.key}-${index}`)}
+          onFavoritePress={() => selectFilter(`${item.key}-${index}`)}
+          isShort={isShort}
+        />
+      )}
       keyExtractor={(item, index) => `${item.key}-${index}`}
     />
   );

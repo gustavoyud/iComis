@@ -13,7 +13,7 @@ import {BUSINESS_LIST} from '~/shared/mocks/stores';
 import {SUB_CATEGORIES} from '~/shared/mocks/sub-categories';
 import {RootState} from '~/shared/store';
 import {BASE_COLORS} from '~/shared/styles/colors';
-import {filson, flex, mb, mt} from '~/shared/styles/utils';
+import {filson, flex, mb, mr, mt} from '~/shared/styles/utils';
 import {ROUTES, RoutesParamList} from '../../tabs';
 import {styles} from './styles';
 
@@ -79,7 +79,7 @@ const RestaurantsComponent: FC<Props> = ({filters: {selectedKeys}, navigation}) 
 
         <View style={[mt(15), mb(20)]}>
           <Carousel pages={carouselPages} />
-          <View style={[flex('space-between'), mt(20), mb(20)]}>
+          <View style={[flex('space-between'), mt(20), mb(20), mr(20)]}>
             <Text style={filson('Regular', 18, BASE_COLORS.textStrong)}>Últimas lojas</Text>
             <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Order)}>
               <Text style={filson('Regular', 14, BASE_COLORS.primary500)}>Ver mais</Text>
@@ -92,7 +92,7 @@ const RestaurantsComponent: FC<Props> = ({filters: {selectedKeys}, navigation}) 
         <Banner bannerId={BANNERS.market} />
 
         <View style={[mt(15), mb(20)]}>
-          <View style={[flex('space-between'), mt(20), mb(20)]}>
+          <View style={[flex('space-between'), mt(20), mb(20), mr(20)]}>
             <Text style={filson('Regular', 18, BASE_COLORS.textStrong)}>Famosos no iComis</Text>
             <TouchableOpacity onPress={() => navigation.navigate(ROUTES.Order)}>
               <Text style={filson('Regular', 14, BASE_COLORS.primary500)}>Ver mais</Text>
@@ -103,8 +103,10 @@ const RestaurantsComponent: FC<Props> = ({filters: {selectedKeys}, navigation}) 
 
         <Banner bannerId={BANNERS.gourmet} />
 
-        <Text style={[filson('Regular', 18, BASE_COLORS.textStrong), mt(25), mb(15)]}>Lojas</Text>
-        <BusinessList list={BUSINESS_LIST} />
+        <View style={mr(20)}>
+          <Text style={[filson('Regular', 18, BASE_COLORS.textStrong), mt(25), mb(15)]}>Lojas</Text>
+          <BusinessList list={BUSINESS_LIST} />
+        </View>
       </View>
     </ScrollView>
   );

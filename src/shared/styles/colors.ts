@@ -21,6 +21,7 @@ export const BASE_COLORS = {
   textLight: '#a5a5a5',
   textMedium: '#7b7b7b',
   textStrong: '#000000',
+  textSuccess: '#50a773',
 
   border: '#E8E8E8',
   primaryBackground: '#F7ACB766',
