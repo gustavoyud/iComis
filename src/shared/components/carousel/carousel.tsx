@@ -48,7 +48,7 @@ const Carousel: FC<Props> = ({pages}) => {
         <Image source={{uri}} style={styles.image} />
         <View>
           <Text style={filson('Bold', 16, BASE_COLORS.mainBackground)}>{label}</Text>
-          <Text style={filson('Regular', 16, BASE_COLORS.mainBackground)}> em promoção</Text>
+          <Text style={filson('Regular', 16, BASE_COLORS.mainBackground)}> em promoção (s)</Text>
         </View>
       </TouchableOpacity>
     );
